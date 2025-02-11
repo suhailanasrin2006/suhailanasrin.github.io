@@ -1,0 +1,23 @@
+name: Deploy GitHub Pages
+on:
+  push:
+    branches:
+      - main  # Change if your branch is different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .  # Ensure this is where your site files exist
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
